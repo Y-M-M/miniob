@@ -8,29 +8,28 @@ EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT,
 MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
 See the Mulan PSL v2 for more details. */
 
-//
-// Created by Wangyunlai on 2024/05/29.
-//
-
-#include "sql/expr/aggregator.h"
+#include "common/lang/comparator.h"
+#include "common/lang/sstream.h"
 #include "common/log/log.h"
+#include "null_type.h"
+#include "common/value.h"
 
-RC SumAggregator::accumulate(const Value &value)
+int NullType::compare(const Value &left, const Value &right) const
 {
-  if (value_.attr_type() == AttrType::UNDEFINED) {
-    value_ = value;
-    return RC::SUCCESS;
-  }
-  
-  ASSERT(value.attr_type() == value_.attr_type(), "type mismatch. value type: %s, value_.type: %s", 
-        attr_type_to_string(value.attr_type()), attr_type_to_string(value_.attr_type()));
-  
-  Value::add(value, value_, value_);
+  ASSERT(left.attr_type() == AttrType::NULLS, "left type is not a null");
+  return -1;
+}
+
+RC NullType::to_string(const Value &val, string &result) const
+{
+  result = "NULL";
   return RC::SUCCESS;
 }
 
-RC SumAggregator::evaluate(Value& result)
+RC NullType::cast_to(const Value &val, AttrType type, Value &result, bool allow_type_promotion) const
 {
-  result = value_;
+  ASSERT(val.attr_type() == AttrType::NULLS, "val type is not a null");
+  result.set_type(type);
+  result.set_null();
   return RC::SUCCESS;
 }
