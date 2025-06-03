@@ -1,15 +1,3 @@
-/***************************************************************
- *                                                             *
- * @Author      : Koschei                                      *
- * @Email       : nitianzero@gmail.com                         *
- * @Date        : 2024/9/20                                    *
- * @Description : UpdateLogicalOperator header file            *
- *                                                             *
- * Copyright (c) 2024 Koschei                                  *
- * All rights reserved.                                        *
- *                                                             *
- ***************************************************************/
-
 #pragma once
 
 #include "sql/operator/logical_operator.h"

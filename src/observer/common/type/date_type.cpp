@@ -1,15 +1,3 @@
-/***************************************************************
- *                                                             *
- * @Author      : Koschei                                      *
- * @Email       : nitianzero@gmail.com                         *
- * @Date        : 2024/9/11                                    *
- * @Description : DateType source file                         *
- *                                                             *
- * Copyright (c) 2024 Koschei                                  *
- * All rights reserved.                                        *
- *                                                             *
- ***************************************************************/
-
 #include "date_type.h"
 
 #include <common/value.h>

@@ -1,15 +1,3 @@
-/***************************************************************
- *                                                             *
- * @Author      : Koschei                                      *
- * @Email       : nitianzero@gmail.com                         *
- * @Date        : 2024/10/12                                   *
- * @Description : create view executor source file             *
- *                                                             *
- * Copyright (c) 2024 Koschei                                  *
- * All rights reserved.                                        *
- *                                                             *
- ***************************************************************/
-
 #include "sql/executor/create_view_executor.h"
 #include "common/log/log.h"
 #include "event/session_event.h"

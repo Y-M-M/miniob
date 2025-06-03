@@ -1,15 +1,3 @@
-/***************************************************************
- *                                                             *
- * @Author      : Koschei                                      *
- * @Email       : nitianzero@gmail.com                         *
- * @Date        : 2024/10/12                                     *
- * @Description : Brief description of the file's purpose      *
- *                                                             *
- * Copyright (c) 2024 Koschei                                  *
- * All rights reserved.                                        *
- *                                                             *
- ***************************************************************/
-
 #include "common/log/log.h"
 #include "event/session_event.h"
 #include "event/sql_event.h"

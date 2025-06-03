@@ -1,14 +1,3 @@
-/***************************************************************
- *                                                             *
- * @Author      : Koschei                                      *
- * @Email       : nitianzero@gmail.com                         *
- * @Date        : 2024/9/17                                    *
- * @Description : UpdatePhysicalOperator source file           *
- *                                                             *
- * Copyright (c) 2024 Koschei                                  *
- * All rights reserved.                                        *
- *                                                             *
- ***************************************************************/
 
 #include "update_physical_operator.h"
 #include "storage/trx/trx.h"

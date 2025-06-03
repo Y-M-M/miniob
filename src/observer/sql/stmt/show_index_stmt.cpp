@@ -1,15 +1,3 @@
-/***************************************************************
- *                                                             *
- * @Author      : Koschei                                      *
- * @Email       : nitianzero@gmail.com                         *
- * @Date        : 2024/9/29                                    *
- * @Description : Brief description of the file's purpose      *
- *                                                             *
- * Copyright (c) 2024 Koschei                                  *
- * All rights reserved.                                        *
- *                                                             *
- ***************************************************************/
-
 #include "storage/db/db.h"
 #include "sql/stmt/show_index_stmt.h"
 

@@ -94,6 +94,7 @@ public:
 
   static RC cast_to(const Value &value, AttrType to_type, Value &result, bool allow_type_promotion = true)
   {
+    // cout << "attr_type() is chars ? " << (value.attr_type() == AttrType::CHARS) << endl;
     return DataType::type_instance(value.attr_type())->cast_to(value, to_type, result, allow_type_promotion);
   }
 

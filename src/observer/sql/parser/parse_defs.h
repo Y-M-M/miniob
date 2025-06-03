@@ -248,7 +248,7 @@ struct DropViewSqlNode
  */
 struct DropTableSqlNode
 {
-  std::string relation_name;  ///< 要删除的表名
+  std::string relation_name;  ///< 要删除view的表名
 };
 
 enum class IndexType
@@ -371,15 +371,15 @@ enum SqlCommandFlag
   SCF_UPDATE,
   SCF_DELETE,
   SCF_CREATE_TABLE,
-  SCF_DROP_TABLE,
+  SCF_DROP_TABLE, ///< 删掉了analyze_table
   SCF_CREATE_INDEX,
   SCF_DROP_INDEX,
-  SCF_SHOW_INDEX,
+  SCF_SHOW_INDEX, ///< 展示所有index
   SCF_SYNC,
   SCF_SHOW_TABLES,
   SCF_DESC_TABLE,
-  SCF_CREATE_VIEW,
-  SCF_DROP_VIEW,
+  SCF_CREATE_VIEW, ///< 创建视图
+  SCF_DROP_VIEW, ///< drop视图
   SCF_BEGIN,  ///< 事务开始语句，可以在这里扩展只读事务
   SCF_COMMIT,
   SCF_CLOG_SYNC,

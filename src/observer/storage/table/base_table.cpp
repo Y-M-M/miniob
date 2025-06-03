@@ -1,15 +1,3 @@
-/***************************************************************
- *                                                             *
- * @Author      : Koschei                                      *
- * @Email       : nitianzero@gmail.com                         *
- * @Date        : 2024/10/17                                   *
- * @Description : table base source file                       *
- *                                                             *
- * Copyright (c) 2024 Koschei                                  *
- * All rights reserved.                                        *
- *                                                             *
- ***************************************************************/
-
 #include "base_table.h"
 
 RC BaseTable::set_value_to_record(char *record_data, const Value &value, const FieldMeta *field)
@@ -70,7 +58,6 @@ RC BaseTable::make_record(int value_num, const Value *values, Record &record)
             break;
           }
         } else {
-          // 插入不允许非目标类型的类型提升
           rc = Value::cast_to(value, field->type(), real_value, false);
           if (OB_FAIL(rc)) {
             LOG_WARN("failed to cast value. table name:%s, field name:%s, value:%s",

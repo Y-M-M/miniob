@@ -40,6 +40,7 @@ RC InsertStmt::create(Db *db, const InsertSqlNode &inserts, Stmt *&stmt)
     return RC::SCHEMA_TABLE_NOT_EXIST;
   }
 
+  // do special operator for view
   if (table->type() == TableType::View) {
     if (!table->is_mutable()) {
       LOG_ERROR("The target table %s of the INSERT is not insertable-into", table->name());
