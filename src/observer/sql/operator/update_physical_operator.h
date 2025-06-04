@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include "sql/operator/physical_operator.h"

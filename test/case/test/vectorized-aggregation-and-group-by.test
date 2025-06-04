@@ -1,6 +1,6 @@
 -- echo initialization
 set execution_mode='chunk_iterator';
-CREATE TABLE aggregation_func(id int, num int, price float, addr char) storage format=pax;
+CREATE TABLE aggregation_func(id int, num int, price float, addr char(40)) storage format=pax;
 
 INSERT INTO aggregation_func VALUES (1, 18, 10.0, 'abc');
 INSERT INTO aggregation_func VALUES (2, 15, 20.0, 'abc');

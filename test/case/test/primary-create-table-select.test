@@ -1,0 +1,20 @@
+--- echo create table from a table
+create table cerateselect1(id int, col1 int, feat1 float);
+insert into cerateselect1 values(1, 1, 27.5);
+insert into cerateselect1 values(2, 2, 20.5);
+insert into cerateselect1 values(3, 3, 24);
+select * from cerateselect1;
+create table cerateselect2 as select * from cerateselect1;
+select * from cerateselect2;
+
+--- echo create table from a table with conditions
+create table cerateselect3 as select * from cerateselect1 where feat1 = 20.5;
+select * from cerateselect3;
+
+--- echo select some cols
+create table cerateselect4 as select id, col1 from cerateselect1;
+select * from cerateselect4;
+
+--- echo invalid
+create table cerateselect5 as select id, col1 from cerateselect;
+

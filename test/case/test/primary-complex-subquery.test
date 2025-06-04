@@ -1,0 +1,35 @@
+-- echo create table
+CREATE TABLE complexsub1 (emp_id INT, emp_name CHAR(50), salary INT, dept_id INT);
+CREATE TABLE complexsub2 (dept_id INT, dept_name CHAR(50), location CHAR(50));
+CREATE TABLE complexsub3 (order_id INT, emp_id INT, order_date date,  amount INT);
+CREATE TABLE complexsub4 (product_id INT, product_name CHAR(50), price INT, category CHAR(20));
+CREATE TABLE complexsub5 (order_id INT, product_id INT, quantity INT);
+
+--- insert
+INSERT INTO complexsub2 VALUES (1, '研发部', '北京');
+INSERT INTO complexsub2 VALUES (2, '销售部', '上海');
+INSERT INTO complexsub2 VALUES (3, '财务部', '广州');
+INSERT INTO complexsub2 VALUES (4, '人事部', '深圳');
+INSERT INTO complexsub1 VALUES (101, '张三', 8000, 1);
+INSERT INTO complexsub1 VALUES (102, '李四', 7500, 1);
+INSERT INTO complexsub1 VALUES (103, '王五', 9000, 2);
+INSERT INTO complexsub1 VALUES (104, '赵六', 12000, 2);
+INSERT INTO complexsub1 VALUES (105, '钱七', 8500, 3);
+INSERT INTO complexsub1 VALUES (106, '孙八', 9500, 4);
+INSERT INTO complexsub4 VALUES (1, '笔记本电脑', 6000, '电子产品');
+INSERT INTO complexsub4 VALUES (2, '手机', 4000, '电子产品');
+INSERT INTO complexsub4 VALUES (3, '办公桌', 900, '家具');
+INSERT INTO complexsub4 VALUES (4, '椅子', 300, '家具');
+INSERT INTO complexsub4 VALUES (5, '打印机', 1300, '办公设备');
+INSERT INTO complexsub3 VALUES (1001, 101, '2023-01-15', 6000);
+INSERT INTO complexsub3 VALUES (1002, 102, '2023-02-10', 8000);
+INSERT INTO complexsub3 VALUES (1003, 103, '2023-03-05', 3000);
+INSERT INTO complexsub3 VALUES (1004, 101, '2023-04-12', 1800);
+INSERT INTO complexsub3 VALUES (1005, 104, '2023-05-20', 5200);
+INSERT INTO complexsub5 VALUES (1001, 1, 1);
+INSERT INTO complexsub5 VALUES (1002, 2, 2);
+INSERT INTO complexsub5 VALUES (1003, 4, 10);
+INSERT INTO complexsub5 VALUES (1004, 3, 2);
+INSERT INTO complexsub5 VALUES (1005, 1, 1);
+INSERT INTO complexsub5 VALUES (1005, 5, 1);
+

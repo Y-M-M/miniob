@@ -1,0 +1,15 @@
+--- initialization
+CREATE TABLE alias_test1(id int, name char(40), score float);
+INSERT INTO alias_test1 VALUES (1, 'alice', 88.5);
+INSERT INTO alias_test1 VALUES (2, 'bob', 77.0);
+INSERT INTO alias_test1 VALUES (3, 'carol', 91.2);
+
+--- cloumn alias
+SELECT id AS i, name AS n, score AS s FROM alias_test1;
+
+--- table alias
+SELECT a.id, a.name, a.score FROM alias_test1 AS a;
+SELECT a.id AS idenito, a.name AS namerado FROM alias_test1 AS a;
+
+--- invalid (repeat)
+SELECT * FROM alias_test1 AS a, alias_test2 AS a WHERE a.id = a.uid;

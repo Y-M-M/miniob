@@ -1,0 +1,22 @@
+--- echo initialization
+CREATE TABLE func_test(id int, name char(40), score float, birthday date);
+INSERT INTO func_test VALUES (1, 'alice', 85.75, '2000-01-01');
+INSERT INTO func_test VALUES (2, 'bob', 92.4, '1999-12-31');
+INSERT INTO func_test VALUES (3, 'charlie', 78.666, '2010-07-15');
+INSERT INTO func_test VALUES (4, '', 100.0, '2021-11-11');
+INSERT INTO func_test VALUES (5, '张三', 59.9, '2023-03-10');
+
+--- echo LENGTH test
+SELECT LENGTH(name) FROM func_test;
+SELECT * FROM func_test WHERE LENGTH(name) > 4;
+
+--- echo ROUND test
+SELECT ROUND(score) FROM func_test;
+SELECT * FROM func_test WHERE ROUND(score) > 80;
+
+--- echo DATE_FORMAT test
+SELECT DATE_FORMAT(birthday, '%Y-%m-%d') FROM func_test;
+
+--- echo invalid test
+SELECT LENGTH(score) FROM func_test;
+SELECT LENGTH(birthday) FROM func_test;

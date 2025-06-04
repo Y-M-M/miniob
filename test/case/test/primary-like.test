@@ -1,0 +1,14 @@
+--- echo initialization
+CREATE TABLE like_func(id int, name char(30));
+INSERT INTO like_func VALUES (1, 'alice');
+INSERT INTO like_func VALUES (2, 'bob');
+INSERT INTO like_func VALUES (3, 'alina');
+INSERT INTO like_func VALUES (4, 'alex');
+INSERT INTO like_func VALUES (5, 'allen');
+INSERT INTO like_func VALUES (6, 'beta');
+INSERT INTO like_func VALUES (7, 'a_ic');
+
+--- echo match
+SELECT * FROM like_func WHERE name LIKE 'a%';
+SELECT * FROM like_func WHERE name LIKE '_l___';
+SELECT * FROM like_func WHERE name LIKE 'a_i%';

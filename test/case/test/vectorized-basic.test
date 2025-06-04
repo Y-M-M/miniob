@@ -1,7 +1,7 @@
 -- echo basic insert
 
 set execution_mode='chunk_iterator';
-create table t_basic(id int, age int, name char, score float) storage format=pax;
+create table t_basic(id int, age int, name char(40), score float) storage format=pax;
 insert into t_basic values(1,1, 'a', 1.0);
 insert into t_basic values(2,2, 'b', 2.0);
 insert into t_basic values(4,4, 'c', 3.0);

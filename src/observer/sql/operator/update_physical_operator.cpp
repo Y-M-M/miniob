@@ -1,4 +1,3 @@
-
 #include "update_physical_operator.h"
 #include "storage/trx/trx.h"
 

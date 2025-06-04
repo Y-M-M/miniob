@@ -1,0 +1,15 @@
+create table users (id int,  name char, age int);
+insert into users values(1, 'zhang', 16);
+insert into users values(2, 'song', 18);
+insert into users values(3, 'yang', 19);
+insert into users values(4, 'li', 30);
+
+--- create view
+create view single_table_view as select id, name, age from users where age > 18;
+
+--- test select
+select * from single_table_view;
+
+--- test update
+update single_table_view set name = 'Alice' where id = 1;
+SELECT name FROM users WHERE id = 1;

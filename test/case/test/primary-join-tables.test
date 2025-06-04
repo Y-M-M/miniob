@@ -1,5 +1,5 @@
 -- echo initialization
-CREATE TABLE join_table_1(id int, name char);
+CREATE TABLE join_table_1(id int, name char(40));
 CREATE TABLE join_table_2(id int, num int);
 CREATE TABLE join_table_3(id int, num2 int);
 create table join_table_empty_1(id int, num_empty_1 int);

@@ -1,4 +1,3 @@
-
 #include "update_logical_operator.h"
 
 UpdateLogicalOperator::UpdateLogicalOperator(
