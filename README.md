@@ -1408,22 +1408,22 @@ struct SelectSqlNode
 1.	在yacc_sql.y加入alias的语法单元，若为空则返回null，若为as ID/ID的形式，返回别名字符串。表达式的expression_list中，对于单个或者用逗号分隔的多个表达式别名，如果存在 alias，就设置别名。关系的rel_list同理，语法分析识别每个关系的别名，保存在RelationNode。
 ```
 expression_list:
-...
+    ...
     | expression alias
     {
       $$ = new std::vector<std::unique_ptr<Expression>>;
       if (nullptr != $2) {
         $1->set_alias($2);
       }
-...
+      ...
     }
     | expression alias COMMA expression_list
     {
-...
+      ...
       if (nullptr != $2) {
         $1->set_alias($2);
       }
-...
+      ...
     }
     ;
     
@@ -1440,19 +1440,19 @@ expression_list:
 
 rel_list:
     relation alias {
-...
+      ...
       if(nullptr!=$2){
         $$->emplace_back($1,$2);
         free($2);
       }
     }
     | relation alias COMMA rel_list {
-...
+      ...
       if(nullptr!=$2){
         $$->insert($$->begin(), RelationNode($1,$2));
         free($2);
       }
-...
+      ...
     }
     ;
 ```
