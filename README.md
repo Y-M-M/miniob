@@ -333,8 +333,9 @@ RC CommandExecutor::execute(SQLStageEvent *sql_event)
       rc = executor.execute(sql_event);
     } break;
 }
+```
 6.	创建对应的drop_table_executor.cpp。它确保stmt类型正确，从 sql_event中提取stmt并转换为 DropTableStmt，获取数据库对象，最后调用具体的drop_table() 方法。
-C++
+```C++
 RC DropTableExecutor::execute(SQLStageEvent *sql_event)
 {
   Stmt    *stmt    = sql_event->stmt();
