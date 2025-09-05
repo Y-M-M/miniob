@@ -118,19 +118,19 @@
 
 ### 2.1 数据库管理系统架构
  
-• 网络模块(NET Service)：负责与客户端交互，收发客户端请求与应答；
-• SQL解析(Parser)：将用户输入的SQL语句解析成语法树；
-• 语义解析模块(Resolver)：将生成的语法树，转换成数据库内部数据结构；
-• 查询优化(Optimizer)：根据一定规则和统计数据，调整/重写语法树。(部分实现)；
-• 计划执行(Executor)：根据语法树描述，执行并生成结果；
-• 存储引擎(Storage Engine)：负责数据的存储和检索；
-• 事务管理(MVCC)：管理事务的提交、回滚、隔离级别等。当前事务管理仅实现了MVCC模式，因此直接以MVCC展示；
-• 日志管理(Redo Log)：负责记录数据库操作日志；
-• 记录管理(Record Manager)：负责管理某个表数据文件中的记录存放；
-• B+ Tree：表索引存储结构；
-• 会话管理：管理用户连接、调整某个连接的参数；
-• 元数据管理(Meta Data)：记录当前的数据库、表、字段和索引元数据信息；
-• 客户端(Client)：作为测试工具，接收用户请求，向服务端发起请求。
+• 网络模块(NET Service)：负责与客户端交互，收发客户端请求与应答；                
+• SQL解析(Parser)：将用户输入的SQL语句解析成语法树；               
+• 语义解析模块(Resolver)：将生成的语法树，转换成数据库内部数据结构；          
+• 查询优化(Optimizer)：根据一定规则和统计数据，调整/重写语法树。(部分实现)；               
+• 计划执行(Executor)：根据语法树描述，执行并生成结果；             
+• 存储引擎(Storage Engine)：负责数据的存储和检索；              
+• 事务管理(MVCC)：管理事务的提交、回滚、隔离级别等。当前事务管理仅实现了MVCC模式，因此直接以MVCC展示；                
+• 日志管理(Redo Log)：负责记录数据库操作日志；             
+• 记录管理(Record Manager)：负责管理某个表数据文件中的记录存放；                 
+• B+ Tree：表索引存储结构；              
+• 会话管理：管理用户连接、调整某个连接的参数；               
+• 元数据管理(Meta Data)：记录当前的数据库、表、字段和索引元数据信息；            
+• 客户端(Client)：作为测试工具，接收用户请求，向服务端发起请求。              
 
 ### 2.2 采用的开发平台
 
@@ -230,15 +230,15 @@ RC parse_date(const char *str, int &result)
   return RC::SUCCESS;
 }
 ```
-3.2 drop-table 
-3.2.1 题目
+## 3.2 drop-table 
+### 3.2.1 题目
 实现删除表(drop table)，清除表相关的资源。
 当前 MiniOB 支持建表与创建索引，但是没有删除表的功能。
 在实现此功能时，除了要删除所有与表关联的数据，不仅包括磁盘中的文件，还包括内存中的索引等数据。
 删除表的语句为 drop table table-name
-3.2.2 实现思路
+### 3.2.2 实现思路
 为了实现drop table的功能，我参考了create table调用了哪些接口，创建了哪些元文件，然后试图找到或创建删除它们的对应接口，如元组、索引等。类似于实现建表的逆过程。然后，我自底向上查看实现sql语句的各个关键文件，添加drop table的相应内容。函数内需要删除table的元数据文件、index文件、data文件，然后还需要回收bufferpool中该文件对应的页，成功的话再将该table的tableMeta从Db类中删除。
-3.2.3 实现方案
+### 3.2.3 实现方案
 1.	语法解析文件yacc_sql.y需要增加drop table的识别。需要创建drop table的语法解析树，并在type、command_wrapper加入drop_table_stmt。初始的Miniob文件已有解析，无需添加。
 ```C++
   /** type 定义了各种解析后的结果输出的是什么类型。类型对应了 union 中的定义的成员变量名称 **/
@@ -377,13 +377,13 @@ RC Table::drop()
   return RC::SUCCESS;
 }
 ```
-3.3 update
-3.3.1 题目
+## 3.3 update
+### 3.3.1 题目
 实现更新行数据的功能。
 当前实现 update 单个字段即可。现在 MiniOB 具有 insert 和 delete 功能，在此基础上实现更新功能。可以参考 insert_record 和 delete_record 的实现。目前仅能支持单字段 update 的语法解析，但是不能执行。需要考虑带条件查询的更新，和不带条件的更新，同时需要考虑带索引时的更新。
-3.3.2 实现思路
+### 3.3.2 实现思路
 和drop table相似，我先参考了流程相似的insert和delete的逻辑，然后在主要的执行阶段中加入update需要的接口。在各个阶段中，要添加这些对象的链路。总体来说，我们实现update的方法是层层调用update接口，在底层直接将更新的值memcpy到内存中。中间还涉及了B+树索引表项的删除和新建。
-3.3.3 实现方案
+### 3.3.3 实现方案
 由于源代码的yacc_sql.y和parse_def.h已有update的相关内容，这部分逻辑可以等到实现复杂update语句（以及子查询）再更新。
 1.	在stmt.cpp加入update的内容：识别到SCF_UPDATE后，调用Create创建UpdateStmt。
 ```C++
@@ -554,8 +554,8 @@ RC RowRecordPageHandler::update_record(const RID &rid, const char *data)
 ......
 }
 ```
-3.4 aggregation-func
-3.4.1 题目
+## 3.4 aggregation-func
+### 3.4.1 题目
 1.	题目描述：
 实现聚合函数 max/min/count/avg/sum。
 聚合函数会遍历所有相关的行数据做相关的统计，并输出结果。
